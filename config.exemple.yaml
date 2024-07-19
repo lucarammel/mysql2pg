@@ -1,0 +1,19 @@
+# Database connection parameters
+sql_host: 
+sql_port: 
+sql_username: 
+sql_password: 
+
+pg_host: 
+pg_port: 
+pg_username: 
+pg_password: 
+pg_database: 
+
+to_migrate :
+  schema:
+    - table
+
+# Overall params
+
+batch_size:
