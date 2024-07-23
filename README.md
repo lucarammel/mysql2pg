@@ -7,7 +7,7 @@ This script facilitates the migration of data from MySQL to PostgreSQL, ensuring
 - Clone the project and get into the project: 
 
 ```bash
-git clone https://gitlab.adaje.oi.enedis.fr/be-prev/migration_sql_pg.git
+git clone https://github.com/lucarammel/migration_sql_pg.git
 
 cd migration_sql_pg
 ```
@@ -16,7 +16,7 @@ cd migration_sql_pg
 
 ```bash
 python -m venv venv
-pip install -r requirements.txt
+pip install --proxy http://vip-users.proxy.edf.fr:3131 -r requirements.txt
 ```
 
 - Edit the `config.exemple.yaml` file and rename it `config.yaml`
@@ -36,3 +36,4 @@ The script follows these main steps:
 3. **Data Migration**: Migrates data from MySQL to PostgreSQL reading and uploading by batch the data.
 4. **Sanity check**: The sanity check is performed at the end of the migration. A random subset of the table is downloaded in the both database and compared, The sanity check is performed five times.
 5. **Structure Synchronization**: Ensures that table structures in PostgreSQL match those in MySQL. Specially the default value, the non nullability constraint and primary keys. 
+6. **Column Renaming**: Renames all columns in PostgreSQL to lowercase for consistency.
