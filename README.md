@@ -16,7 +16,7 @@ cd migration_sql_pg
 
 ```bash
 python -m venv venv
-pip install --proxy http://vip-users.proxy.edf.fr:3131 -r requirements.txt
+pip install -r requirements.txt
 ```
 
 - Edit the `config.exemple.yaml` file and rename it `config.yaml`
