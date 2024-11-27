@@ -1,7 +1,7 @@
 import typer
 from typing import Annotated
 from migrator_sql_pg.main import run_migration
-import migrator_sql_pg as mysql2pq
+import migrator_sql_pg as mysql2pg
 
 app = typer.Typer()
 
@@ -20,4 +20,4 @@ def run(
 
 @app.command()
 def version():
-    print(mysql2pq.__version__)
+    print(mysql2pg.__version__)

@@ -42,4 +42,4 @@ def run_migration(filepath: str = "config.yaml", log_filepath: str = "logs"):
 
 
 if __name__ == "__main__":
-    run()
+    run_migration()

@@ -23,7 +23,7 @@ uv sync
 Use CLI to run the migration : 
 
 ```bash
-mysql2pq run --filepath config.yaml --log-filepath log
+mysql2pg run --filepath config.yaml --log-filepath log
 ```
 And get any helps on the CLI :
 
