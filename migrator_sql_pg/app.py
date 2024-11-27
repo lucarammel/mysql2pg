@@ -1,6 +1,7 @@
 import typer
 from typing import Annotated
-from migrator_sql_pg.main import run
+from migrator_sql_pg.main import run_migration
+import migrator_sql_pg as mysql2pq
 
 app = typer.Typer()
 
@@ -14,4 +15,9 @@ def run(
         str, typer.Option(help="Log folder to write migration files")
     ] = "log",
 ):
-    run(filepath=filepath, log_filepath=log_filepath)
+    run_migration(filepath=filepath, log_filepath=log_filepath)
+
+
+@app.command()
+def version():
+    print(mysql2pq.__version__)

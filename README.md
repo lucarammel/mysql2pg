@@ -7,25 +7,31 @@ This script facilitates the migration of data from MySQL to PostgreSQL, ensuring
 - Clone the project and get into the project: 
 
 ```bash
-git clone https://github.com/lucarammel/migration_sql_pg.git
+git clone https://github.com/lucarammel/MySQL2Postgre.git
 
-cd migration_sql_pg
+cd MySQL2Postgre
 ```
 
 - Create virtual environment : 
 
 ```bash
-python -m venv venv
-pip install -r requirements.txt
+uv sync
 ```
 
 - Edit the `config.exemple.yaml` file and rename it `config.yaml`
 
-- Run main script : 
+Use CLI to run the migration : 
 
 ```bash
-venv/bin/python main.py
+mysql2pq run --filepath config.yaml --log-filepath log
 ```
+And get any helps on the CLI :
+
+```bash
+mysql2pg --help
+```
+
+The CLI is powered by **Typer** ! :rocket:
 
 ## How It Works
 

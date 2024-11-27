@@ -4,15 +4,38 @@ version = "0.1.0"
 description = "Migrate your database from MySQL to PostgreSQL"
 readme = "README.md"
 requires-python = ">=3.8"
-dependencies = []
+dependencies = [
+    "adbc-driver-postgresql>=1.2.0",
+    "adbc-driver-sqlite>=1.2.0",
+    "connectorx>=0.3.3",
+    "datetime>=5.5",
+    "loguru>=0.7.2",
+    "mysql-connector-python>=9.0.0",
+    "pandas>=2.0.3",
+    "polars>=1.8.2",
+    "psycopg2-binary>=2.9.10",
+    "pymysql>=1.1.1",
+    "pyyaml>=6.0.2",
+    "sqlalchemy>=2.0.36",
+    "typer>=0.13.1",
+]
 authors = [{name='Lucas Pereira', email='lucaspereira0497@gmail.com'}]
 
 [project.scripts]
-migrate-sql-pg = "migrate-sql-pg.app:app"
+mysql2pg = "migrator_sql_pg.app:app"
 
 [build-system]
 requires = ["setuptools >= 61.0"]
 build-backend = "setuptools.build_meta"
 
+[tool.setuptools]
+include-package-data = false
+packages.find.include = ["migrator_sql_pg*"]
+
 [tool.ruff]
 line-length=100
+
+[dependency-groups]
+dev = [
+    "ipykernel>=6.29.5",
+]

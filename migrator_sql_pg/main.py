@@ -5,7 +5,7 @@ from migrator_sql_pg.utils import create_engine
 from migrator_sql_pg.main_wrapper import sync_tables_structure, migrate
 
 
-def run(filepath: str = "config.yaml", log_filepath: str = "logs"):
+def run_migration(filepath: str = "config.yaml", log_filepath: str = "logs"):
 
     start_time = datetime.now()
     log_file_name = (
