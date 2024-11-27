@@ -1,6 +1,6 @@
 # Migration MySQL -> PG
 
-This script facilitates the migration of data from MySQL to PostgreSQL, ensuring the synchronization of table structures and column names, followed by data migration in batches. It handles various aspects of the migration process, including schema and table creation, data transfer, and sanity checks to verify data integrity.
+This tool facilitates the migration of data from MySQL to PostgreSQL, ensuring the synchronization of table structures and column names, followed by data migration in batches. It handles various aspects of the migration process, including schema and table creation, data transfer, and sanity checks to verify data integrity.
 
 ## Quick start ! 
 
