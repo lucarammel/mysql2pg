@@ -1,5 +1,5 @@
 [project]
-name = "migration-sql-pg"
+name = "mysql2pg"
 version = "0.1.0"
 description = "Migrate your database from MySQL to PostgreSQL"
 readme = "README.md"
@@ -27,6 +27,10 @@ mysql2pg = "mysql2pg.app:app"
 [build-system]
 requires = ["setuptools >= 61.0"]
 build-backend = "setuptools.build_meta"
+
+[project.urls]
+Homepage = "https://github.com/lucarammel/mysql2pg"
+Issues = "https://github.com/lucarammel/mysql2pg/issues"
 
 [tool.setuptools]
 include-package-data = false
