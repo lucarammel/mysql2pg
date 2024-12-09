@@ -12,7 +12,7 @@ git clone https://github.com/lucarammel/mysql2pg.git
 cd mysql2pg
 ```
 
-- Create virtual environment : 
+- Create virtual environment :
 
 ```bash
 uv sync
@@ -31,6 +31,8 @@ And get any helps on the CLI :
 ```bash
 mysql2pg --help
 ```
+
+![](/assets/cmd_line_mysql2pg.PNG)
 
 The CLI is powered by **Typer** ! :rocket:
 

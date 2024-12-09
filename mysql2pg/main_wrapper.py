@@ -1,13 +1,14 @@
 from loguru import logger
+
+from mysql2pg.sanity_check import sanity_check
+from mysql2pg.transfer_batch import transfer_data_in_batches
 from mysql2pg.utils import (
-    create_engine,
-    rename_columns_to_lowercase,
     check_if_table_exists,
+    create_engine,
     fetch_tables,
+    rename_columns_to_lowercase,
     sync_table_structure,
 )
-from mysql2pg.transfer_batch import transfer_data_in_batches
-from mysql2pg.sanity_check import sanity_check
 
 
 def migrate(
@@ -38,9 +39,7 @@ def migrate(
         logger.info(f"*********** Schema set to {schema} ************ \n")
         # SQLAlchemy database URL
         mysql_url = f"mysql+pymysql://{sql_username}:{sql_password}@{sql_host}:{sql_port}/{schema}"
-        sql_url_no_driver = (
-            f"mysql://{sql_username}:{sql_password}@{sql_host}:{sql_port}/{schema}"
-        )
+        sql_url_no_driver = f"mysql://{sql_username}:{sql_password}@{sql_host}:{sql_port}/{schema}"
 
         # Create SQLAlchemy engine
         sql_engine = create_engine(mysql_url)
@@ -91,7 +90,7 @@ def migrate(
                     if out == 0:
                         logger.success(f"Migration done for {table}")
                     else:
-                        logger.warning(f"Migration encountered an issue")
+                        logger.warning("Migration encountered an issue")
 
                 else:
                     out = sanity_check(
@@ -106,15 +105,12 @@ def migrate(
                     if out == 0:
                         logger.success(f"Migration done for {table}")
                     else:
-                        logger.warning(f"Migration encountered an issue")
+                        logger.warning("Migration encountered an issue")
 
             except Exception as e:
-                # purge_schemas(postgres_engine)
                 logger.error(e)
 
-            logger.info(
-                f"Avancement of schema processed : {(idx+1)/len(tables):.0%} \n\n"
-            )
+            logger.info(f"Avancement of schema processed : {(idx+1)/len(tables):.0%} \n\n")
 
 
 def rename_columns(migration_mapping, postgres_engine):
@@ -147,9 +143,7 @@ def sync_tables_structure(
         sql_port (int): The MySQL port.
         postgres_engine (sqlalchemy.engine.Engine): The SQLAlchemy engine for the PostgreSQL database.
     """
-    logger.info(
-        "******************** Synchronization tables constraints **********************"
-    )
+    logger.info("******************** Synchronization tables constraints **********************")
 
     for schema in migration_mapping.keys():
         logger.info(f"*********** Schema set to {schema} ************ \n")
@@ -175,4 +169,5 @@ def sync_tables_structure(
                 if row_count_pg * row_count_sql > 0:
                     sync_table_structure(sql_engine, postgres_engine, schema, table)
         except Exception as e:
+            logger.error(e)
             logger.error(e)
