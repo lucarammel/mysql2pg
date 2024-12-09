@@ -1,8 +1,8 @@
-from migrator_sql_pg.utils import check_and_create_schema
+from mysql2pg.utils import check_and_create_schema
 import time
 from loguru import logger
 import polars as pl
-from migrator_sql_pg.retry_decorator import retry_on_failure
+from mysql2pg.retry_decorator import retry_on_failure
 
 
 def transfer_data_in_batches(

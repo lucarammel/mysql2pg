@@ -12,7 +12,7 @@ pg_database:
 
 migration_mapping :
   schema:
-    - table
+    - table # Add 'all' if you want to migrate all the schema 
 
 # Overall params
 

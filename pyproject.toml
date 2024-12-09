@@ -22,7 +22,7 @@ dependencies = [
 authors = [{name='Lucas Pereira', email='lucaspereira0497@gmail.com'}]
 
 [project.scripts]
-mysql2pg = "migrator_sql_pg.app:app"
+mysql2pg = "mysql2pg.app:app"
 
 [build-system]
 requires = ["setuptools >= 61.0"]
@@ -30,7 +30,7 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
 include-package-data = false
-packages.find.include = ["migrator_sql_pg*"]
+packages.find.include = ["mysql2pg*"]
 
 [tool.ruff]
 line-length=100

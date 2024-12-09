@@ -2,7 +2,7 @@ import sqlalchemy as sa
 import polars as pl
 from loguru import logger
 import random
-from migrator_sql_pg.retry_decorator import retry_on_failure
+from mysql2pg.retry_decorator import retry_on_failure
 
 
 def sanity_check(engine, pg_url, mysql_url_no_driver, row_count_sql, schema, table):

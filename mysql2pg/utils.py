@@ -1,7 +1,7 @@
 import sqlalchemy as sa
 import pandas as pd
 from loguru import logger
-from migrator_sql_pg.retry_decorator import retry_on_failure
+from mysql2pg.retry_decorator import retry_on_failure
 
 
 def create_engine(url):

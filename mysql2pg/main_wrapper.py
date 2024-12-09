@@ -1,13 +1,13 @@
 from loguru import logger
-from migrator_sql_pg.utils import (
+from mysql2pg.utils import (
     create_engine,
     rename_columns_to_lowercase,
     check_if_table_exists,
     fetch_tables,
     sync_table_structure,
 )
-from migrator_sql_pg.transfer_batch import transfer_data_in_batches
-from migrator_sql_pg.sanity_check import sanity_check
+from mysql2pg.transfer_batch import transfer_data_in_batches
+from mysql2pg.sanity_check import sanity_check
 
 
 def migrate(
