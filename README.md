@@ -7,9 +7,9 @@ This tool facilitates the migration of data from MySQL to PostgreSQL, ensuring t
 - Clone the project and get into the project: 
 
 ```bash
-git clone https://github.com/lucarammel/MySQL2Postgre.git
+git clone https://github.com/lucarammel/mysql2pg.git
 
-cd MySQL2Postgre
+cd mysql2pg
 ```
 
 - Create virtual environment : 
@@ -20,11 +20,12 @@ uv sync
 
 - Edit the `config.exemple.yaml` file and rename it `config.yaml`
 
-Use CLI to run the migration : 
+Use CLI to run the migration :
 
 ```bash
 mysql2pg run --filepath config.yaml --log-filepath log
 ```
+
 And get any helps on the CLI :
 
 ```bash
