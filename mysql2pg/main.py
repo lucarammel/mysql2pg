@@ -2,6 +2,7 @@ from datetime import datetime
 
 import yaml
 from loguru import logger
+from urllib.parse import quote_plus
 
 from mysql2pg.main_wrapper import migrate, rename_columns, sync_tables_structure
 from mysql2pg.utils import create_engine
@@ -17,7 +18,8 @@ def run_migration(
     with open(filepath, "r") as file:
         cfg = yaml.safe_load(file)
 
-    pg_url = f'postgresql://{cfg["pg_username"]}:{cfg["pg_password"]}@{cfg["pg_host"]}:{cfg["pg_port"]}/{cfg["pg_database"]}'
+    encoded_password = quote_plus(cfg["pg_password"])
+    pg_url = f'postgresql://{cfg["pg_username"]}:{encoded_password}@{cfg["pg_host"]}:{cfg["pg_port"]}/{cfg["pg_database"]}'
     postgres_engine = create_engine(pg_url)
 
     migration_mapping = cfg["migration_mapping"]
