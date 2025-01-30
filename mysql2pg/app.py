@@ -2,6 +2,8 @@ from typing import Annotated
 
 import typer
 import yaml
+from urllib.parse import quote_plus
+from datetime import datetime
 
 import mysql2pg as mysql2pg
 from mysql2pg.main import run_migration
@@ -39,13 +41,22 @@ def purge_db(
     filepath: Annotated[
         str, typer.Option(help="Configuration file path. Expected format : yaml")
     ] = "config.yaml",
+    log_filepath: Annotated[
+        str, typer.Option(help="Log folder to write migration files")
+    ] = "logs",
 ):
     """
     Purge a PostgreSQL database.
     """
+    start_time = datetime.now()
+    log_file_name = (
+        f'{log_filepath}/{start_time.strftime("migration_%Y-%m-%d_%H-%M-%S.log")}'
+    )
+    
     with open(filepath, "r") as file:
         cfg = yaml.safe_load(file)
 
-    pg_url = f'postgresql://{cfg["pg_username"]}:{cfg["pg_password"]}@{cfg["pg_host"]}:{cfg["pg_port"]}/{cfg["pg_database"]}'
+    encoded_password = quote_plus(cfg["pg_password"])
+    pg_url = f'postgresql://{cfg["pg_username"]}:{encoded_password}@{cfg["pg_host"]}:{cfg["pg_port"]}/{cfg["pg_database"]}'
     postgres_engine = create_engine(pg_url)
     purge_schemas(postgres_engine)
